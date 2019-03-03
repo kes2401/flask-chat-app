@@ -12,7 +12,7 @@ def add_message(username, message):
     now = datetime.now().strftime("%H:%M:%S")
     messages.append({"timestamp": now, "from": username, "message": message})
 
-@app.route('/', methods = ["GET", "POST"])
+@app.route('/', methods=["GET", "POST"])
 def index():
     """Main page with instructions"""
     
@@ -20,7 +20,7 @@ def index():
         session["username"] = request.form["username"]
     
     if "username" in session:
-        return redirect(url_for("user", username = session["username"]))
+        return redirect(url_for("user", username=session["username"]))
         
     return render_template("index.html")
 
@@ -32,11 +32,11 @@ def user(username):
         username = session["username"]
         message = request.form["message"]
         add_message(username, message)
-        return redirect(url_for("user", username = session["username"]))
+        return redirect(url_for("user", username=session["username"]))
     
-    return render_template("chat.html", username = username, chat_messages = messages)
+    return render_template("chat.html", username=username, chat_messages=messages)
 
 if __name__ == '__main__':
-    app.run(host=os.environ.get('IP, 0.0.0.0'),
-            port=int(os.environ.get('PORT', "5000")),
+    app.run(host=os.getenv('IP, 0.0.0.0'),
+            port=int(os.getenv('PORT', "5000")),
             debug=False)
