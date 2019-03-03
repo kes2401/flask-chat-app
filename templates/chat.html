@@ -28,7 +28,6 @@
         let textbox = document.getElementById("message");
         
         textbox.onkeydown = function(e) {
-            console.log('sss');
             clearTimeout(timer);
             timer = setTimeout(function() {
                 location.reload();
