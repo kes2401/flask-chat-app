@@ -10,7 +10,7 @@ messages = []
 def add_messages(username, message):
     """Add messages to the 'message' list"""
     now = datetime.now().strftime("%H:%M:%S")
-    messages_dict = {"time": now, "from": username, "message": message}
+    messages_dict = {"timestamp": now, "from": username, "message": message}
     messages.append(messages_dict)
 
 @app.route('/', methods = ["GET", "POST"])
